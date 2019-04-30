@@ -81,6 +81,8 @@ blocklist参考了techjawab的github：
 "rpc-password": "raspberry",
 设置Web登陆用户名：transmission
 "rpc-username": "transmission",
+设置可以访问这个页面的ip列表
+"rpc-whitelist": "192.168.199.*"
 允许Web登陆：（设置为true）
 "utp-enabled": true
 ```
@@ -89,3 +91,5 @@ blocklist参考了techjawab的github：
 ```
 sudo service transmission-daemon reload
 ```
+
+我为了在家和在公司都用域名管理，把``` rpc-whitelist ```部分改成了自动生成，生成脚本见[transmission脚本](./update_transmission.sh)
