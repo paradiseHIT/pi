@@ -7,9 +7,10 @@
 1.烧录img，参看官方文档，我安装的是lite版本，需要一个读sd卡的读卡器，烧录好以后在sd卡一级目录下创建ssh文件，为了无屏无键盘远程可以自动开启ssh服务
 
 ### 基本包安装
-安装工具sudo apt-get install vim python-pip  ntfs-3g  samba samba-common-bin ntpdate xxxxxxx -y
+安装工具
+``` sudo apt-get install vim python-pip  ntfs-3g  samba samba-common-bin ntpdate transmission-daemon -y ```
 调整时间
-~~~ tzselect ~~~
+``` tzselect ```
 
 ### 硬盘挂载
 3.挂载自己的硬盘 sudo modprobe fuse && mount /dev/sda1 /mnt/xxxx
