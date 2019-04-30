@@ -23,7 +23,7 @@ tzselect
 sudo mkdir /mnt/segate
 sudo modprobe fuse && mount /dev/sda1 /mnt/segate
 ```
-执行modprobe的目的是为了解决挂载后权限的问题
+执行 ``` modprobe fuse ``` 的目的是为了解决挂载后权限的问题
 
 修改fstab，每次重启自动挂载
 
@@ -33,10 +33,13 @@ sudo mount -a
 ```
 执行 ``` sudo mount -a ``` 是为了不需要重启就可以自动挂载  
 
-6.samba
-修改samba配置文件并启动samba服务
+### 启动samba
+修改samba配置文件并启动samba服务  
+```
 sudo vim /etc/samba/smb.conf
-最后添加
+```
+最后添加  
+```
 [raspberrypi]
     # 说明信息
     comment = NAS Storage
@@ -53,26 +56,36 @@ sudo vim /etc/samba/smb.conf
     create mask = 0664
     # 新建目录的权限为 775
     directory mask = 0775
+```
 
 增加用户，这个用户必须是已经存在
+```
 sudo smbpasswd -a pi
+```
 重启服务
+```
 sudo /etc/init.d/samba restart
+```
 
-7.transmission配置
-
+### transmission配置
+修改 ``` /etc/transmission-daemon/settings.json ``` 这个文件  
+参考简书上的一段描述  
+```
 blocklist参考了techjawab的github：
 "blocklist-url": "http://list.iblocklist.com/?list=ydxerpxkpcfqjaybcssw&fileformat=p2p&archiveformat=gz",
 设置下载目录为用户目录下的Downloads文件夹：
-"download-dir": "/home/pi/Downloads",
-设置未下载完成数据存放地点为Downloads文件夹：
-"incomplete-dir": "/home/pi/Downloads",
+"download-dir": "/mnt/segate/downloads",
+设置未下载完成数据存放地点为downloads文件夹：
+"incomplete-dir": "/mnt/segate/imcom-downloads",
 设置Web登陆密码为：raspberry
 "rpc-password": "raspberry",
 设置Web登陆用户名：transmission
 "rpc-username": "transmission",
 允许Web登陆：（设置为true）
 "utp-enabled": true
-设置完成之后，保存setting.json文件，重新启动transmission服务：
-sudo service transmission-daemon reload
+```
 
+设置完成之后，保存setting.json文件，重新启动transmission服务  
+```
+sudo service transmission-daemon reload
+```
