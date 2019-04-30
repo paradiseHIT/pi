@@ -23,10 +23,15 @@ tzselect
 sudo mkdir /mnt/segate
 sudo modprobe fuse && mount /dev/sda1 /mnt/segate
 ```
+执行modprobe的目的是为了解决挂载后权限的问题
 
-4.修改fstab，每次重启自动挂载
+修改fstab，每次重启自动挂载
+
+```
 /dev/sda1 /mnt/segate ntfs-3g defaults,noexec,umask=0000 0 0
 sudo mount -a
+```
+执行 ``` sudo mount -a ``` 是为了不需要重启就可以自动挂载  
 
 6.samba
 修改samba配置文件并启动samba服务
