@@ -10,11 +10,16 @@
 安装工具  
 ``` sudo apt-get install vim python-pip  ntfs-3g  samba samba-common-bin ntpdate transmission-daemon -y ```
 
-调整时间
+调整时间  
 ``` tzselect ```
 
 ### 硬盘挂载
-3.挂载自己的硬盘 sudo modprobe fuse && mount /dev/sda1 /mnt/xxxx
+挂载硬盘，注意由于树莓派本身电压较小，要能带动外部硬盘的电压不一定够，建议购买USB分线器
+```
+sudo mkdir /mnt/segate
+sudo modprobe fuse && mount /dev/sda1 /mnt/segate
+```
+
 4.修改fstab，每次重启自动挂载
 /dev/sda1 /mnt/segate ntfs-3g defaults,noexec,umask=0000 0 0
 sudo mount -a
