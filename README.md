@@ -76,7 +76,7 @@ blocklist参考了techjawab的github：
 设置下载目录为用户目录下的Downloads文件夹：
 "download-dir": "/mnt/segate/downloads",
 设置未下载完成数据存放地点为downloads文件夹：
-"incomplete-dir": "/mnt/segate/imcom-downloads",
+"incomplete-dir": "/mnt/segate/incom-downloads",
 设置Web登陆密码为：raspberry
 "rpc-password": "raspberry",
 设置Web登陆用户名：transmission
